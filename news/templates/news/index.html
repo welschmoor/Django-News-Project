@@ -1,0 +1,49 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <div class="mainnavdiv">
+            <ul class="mainnav-ul">
+                <li class="mainnav-li"><a href="/" class="mainnav-a">Home</a></li>
+                <li class="mainnav-li"><a href="/" class="mainnav-a">Add News</a></li>
+            </ul>
+        </div>
+    </header>
+
+<main class="main">
+
+
+<div class="mainnewscontainer">
+
+    {% for each in news %}
+        <div class="individualnews">
+            <p class="newstitle">{{ each.title }}</p>
+            <p class="newscontent">{{ each.content }}</p>
+            <div class="btnreadmore-div">
+                <a href="#" class="btnreadmore">Read more...</a>
+            </div>
+
+            <div class="newsdateandcategory">
+                <p class="newsdate">{{ each.created_at|date:"Y-m-d H:i:s" }}</p><span>Kategorie: {{ each.category }}</span>
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+ </main>
+</body>
+</html>
